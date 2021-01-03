@@ -3,6 +3,7 @@ import webbrowser
 
 imageTypeList = [".jpg", ".png"]
 
+# Splits the passed string at each ", and runs through the split strings until it finds a line with .jpg or .png, returning it
 def getUrlFromImgLine(line):
     splitString = str(line).split('"')
     for x in splitString:
@@ -10,11 +11,13 @@ def getUrlFromImgLine(line):
             if(type in x):
                 return x
 
+# Retrieves and returns the data from the URL using the urllib module
 def getDataFromUrl(myUrl):
     res = url.urlopen(myUrl)
     data = res.readlines()
     return data
 
+# Searches the data for an image, and returns the line if found
 def getImagePaths(data):
     imageList = []
     for x in data:
@@ -22,5 +25,6 @@ def getImagePaths(data):
             imageList.append(x)
     return imageList
 
+# Opens the given URL using the webbrowser module
 def openWebsite(url):
     webbrowser.open(url)

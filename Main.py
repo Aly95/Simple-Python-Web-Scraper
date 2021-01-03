@@ -11,10 +11,12 @@ def main():
     scrapedImageSrcLines = web.getImagePaths(data)
 
     for line in scrapedImageSrcLines:
-        retrievedImagePath = web.getUrlFromImgLine(line)
+        lineConvertedToString = str(line)
+        retrievedImagePath = web.getUrlFromImgLine(lineConvertedToString)
         imageList.append(retrievedImagePath)
 
     for image in imageList:
-        web.openWebsite(myUrl + image)
+        print(image)
+        #web.openWebsite(myUrl + image)
 
 main()

@@ -1,12 +1,13 @@
 import urllib.request as url
+import re
 import webbrowser
 
 imageTypeList = [".jpg", ".png"]
 
-# Splits the passed string at each ", and runs through the split strings until it finds a line with .jpg or .png, returning it
+# Retrieves a list of all data within quotation marks
 def getUrlFromImgLine(line):
-    splitString = str(line).split('"')
-    for x in splitString:
+    dataWithinQuotationMarks = re.findall(r'"(.*?)(?<!\\)"', line)
+    for x in dataWithinQuotationMarks:
         for type in imageTypeList:
             if(type in x):
                 return x

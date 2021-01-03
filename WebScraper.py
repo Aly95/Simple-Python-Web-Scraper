@@ -1,11 +1,14 @@
 import urllib.request as url
 import webbrowser
 
+imageTypeList = [".jpg", ".png"]
+
 def getUrlFromImgLine(line):
     splitString = str(line).split('"')
     for x in splitString:
-        if(".jpg" in x):
-            return x
+        for type in imageTypeList:
+            if(type in x):
+                return x
 
 def getDataFromUrl(myUrl):
     res = url.urlopen(myUrl)

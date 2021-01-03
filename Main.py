@@ -1,3 +1,5 @@
+# Application used to scrape my portfolio for images, and opens each path in a new browser tab
+
 import WebScraper as web
 
 myUrl = "https://aly95.github.io/"

@@ -9,9 +9,9 @@ def main():
 
     webData = WebScraper.getDataFromUrl(myUrl)
 
-    scrapedImageSrcLines = WebScraper.getImagePaths(webData)
+    imageList = WebScraper.getImageList(webData)
 
-    for line in scrapedImageSrcLines:
+    for line in imageList:
         lineToString = str(line)
         imagePath = WebScraper.getUrlFromImgLine(lineToString)
         imagePathList.append(imagePath)

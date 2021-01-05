@@ -1,22 +1,22 @@
-# Application used to scrape my portfolio for images, and opens each path in a new browser tab
+# Application used to scrape my portfolio for images, and opens their path in a new browser tab
 
-import WebScraper as web
+import WebScraper
 
 myUrl = "https://aly95.github.io/"
 
 def main():
-    imageList = []
+    imagePathList = []
 
-    data = web.getDataFromUrl(myUrl)
-    scrapedImageSrcLines = web.getImagePaths(data)
+    webData = WebScraper.getDataFromUrl(myUrl)
+
+    scrapedImageSrcLines = WebScraper.getImagePaths(webData)
 
     for line in scrapedImageSrcLines:
-        lineConvertedToString = str(line)
-        retrievedImagePath = web.getUrlFromImgLine(lineConvertedToString)
-        imageList.append(retrievedImagePath)
+        lineToString = str(line)
+        imagePath = WebScraper.getUrlFromImgLine(lineToString)
+        imagePathList.append(imagePath)
 
-    for image in imageList:
-        print(image)
-        #web.openWebsite(myUrl + image)
+    for path in imagePathList:
+        WebScraper.openWebsite(myUrl + path)
 
 main()

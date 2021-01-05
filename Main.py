@@ -1,22 +1,24 @@
 # Application used to scrape my portfolio for images, and opens their path in a new browser tab
 
 import WebScraper
+from Image import Image
 
 myUrl = "https://aly95.github.io/"
+ytUrl = "https://www.gettyimages.co.uk/collections/500px"
 
 def main():
     imagePathList = []
 
-    webData = WebScraper.getDataFromUrl(myUrl)
+    webData = WebScraper.getDataFromUrl(ytUrl)
 
-    imageList = WebScraper.getImageList(webData)
+    unformattedImageList = WebScraper.getImageList(webData)
 
-    for line in imageList:
-        lineToString = str(line)
-        imagePath = WebScraper.getUrlFromImgLine(lineToString)
+    for unformattedImage in unformattedImageList:
+        imagePath = WebScraper.getUrlFromImgLine(unformattedImage)
         imagePathList.append(imagePath)
 
     for path in imagePathList:
-        WebScraper.openWebsite(myUrl + path)
+        print(path.path)
+        WebScraper.openWebsite(path, ytUrl)
 
 main()

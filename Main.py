@@ -4,21 +4,20 @@ import WebScraper
 from Image import Image
 
 myUrl = "https://aly95.github.io/"
-ytUrl = "https://www.gettyimages.co.uk/collections/500px"
+customUrl = "https://www.gettyimages.co.uk/collections/500px"
 
 def main():
-    imagePathList = []
+    imageList = []
 
-    webData = WebScraper.getDataFromUrl(ytUrl)
+    webData = WebScraper.getDataFromUrl(customUrl)
 
     unformattedImageList = WebScraper.getImageList(webData)
 
     for unformattedImage in unformattedImageList:
-        imagePath = WebScraper.getUrlFromImgLine(unformattedImage)
-        imagePathList.append(imagePath)
+        formattedImage = WebScraper.getUrlFromImgLine(unformattedImage)
+        imageList.append(formattedImage)
 
-    for path in imagePathList:
-        print(path.path)
-        WebScraper.openWebsite(path, ytUrl)
+    for image in imageList:
+        WebScraper.openWebsite(image, customUrl)
 
 main()

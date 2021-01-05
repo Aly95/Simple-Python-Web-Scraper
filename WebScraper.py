@@ -19,7 +19,6 @@ def getImageList(data: str) -> list:
         if(checkValidImage(line)):
             image = convertToImageObject(line)
             imageList.append(image)
-    print(imageList)
     return imageList
 
 # Checks if the line contains any common HTML image tags
@@ -54,7 +53,6 @@ def getUrlFromImgLine(image: Image):
         for type in imageTypeList:
             if(type in x):
                 updatedImage = Image(x, image.type)
-                print(updatedImage)
                 return updatedImage
 
 # Opens the given URL using the webbrowser module
